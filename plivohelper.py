@@ -2,7 +2,9 @@
 
 __VERSION__ = "v0.1"
 
-import urllib, base64, hmac
+import urllib
+import base64
+import hmac
 import urllib.request as urllib2
 from hashlib import sha1
 from xml.dom.minidom import Document
@@ -376,7 +378,7 @@ class Element(object):
             self._is_valid_attribute(k)
             v = Element.bool2txt(v)
             if v is not None:
-                self.attrs[k] = unicode(v)
+                self.attrs[k] = str(v)
 
     def _is_valid_attribute(self, attr):
         if not attr in self.VALID_ATTRS:
