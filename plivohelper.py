@@ -409,7 +409,7 @@ class Element(object):
         element = root.createElement(self.name)
 
         # Add attributes
-        keys = self.attrs.keys()
+        keys = list(self.attrs.keys())
         keys.sort()
         for a in keys:
             element.setAttribute(a, self.attrs[a])
