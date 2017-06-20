@@ -729,12 +729,15 @@ class Record(Element):
     fileName: filename to be used for recording of file
     bothLegs: record both legs (true/false, default false)
               no beep will be played
+    startOnDialAnswer: record call when called party answers in a Dial(true/false, default false)
+                        no maxLength will be applied
+    followTransfer: call recording to continue after transferring (true/false, default false)
     redirect: if 'false', don't redirect to 'action', only request url
         and continue to next element. (default 'true')
     """
-    VALID_ATTRS = ('action', 'method', 'timeout','finishOnKey',
-                   'maxLength', 'bothLegs', 'playBeep',
-                   'fileFormat', 'filePath', 'fileName', 'redirect')
+    VALID_ATTRS = ('action', 'method', 'timeout','finishOnKey', 'maxLength', 'bothLegs',
+                   'startOnDialAnswer', 'followTransfer', 'playBeep', 'fileFormat', 'filePath',
+                   'fileName', 'redirect')
 
     def __init__(self, **kwargs):
         Element.__init__(self, **kwargs)
