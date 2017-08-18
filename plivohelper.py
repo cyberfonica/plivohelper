@@ -705,11 +705,13 @@ class Dial(Element):
         and continue to next element. (default 'true')
     callbackUrl: url to request when bridge starts and bridge ends
     callbackMethod: submit to 'callbackUrl' url using GET or POST
+    recordCallPath: complete file path to save the file to (record call when called party answered)
+                    (default=None)
     """
     VALID_ATTRS = ('action','method','timeout','hangupOnStar',
                    'timeLimit','callerId', 'callerName', 'confirmSound',
                    'dialMusic', 'confirmKey', 'redirect',
-                   'callbackUrl', 'callbackMethod', 'digitsMatch')
+                   'callbackUrl', 'callbackMethod', 'digitsMatch', 'recordCallPath')
 
     def __init__(self, **kwargs):
         Element.__init__(self, **kwargs)
