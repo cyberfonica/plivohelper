@@ -484,6 +484,9 @@ class Element(object):
     def addPreAnswer(self, **kwargs):
         return self.append(PreAnswer(**kwargs))
 
+    def addCallcenter(self, **kwargs):
+        return self.append(Callcenter(**kwargs))
+
 
 class Response(Element):
     """Plivo response object.
@@ -745,7 +748,7 @@ class Record(Element):
         Element.__init__(self, **kwargs)
 
 
-class Record(Element):
+class Callcenter(Element):
     """Add the call to <query_name> queue
 
     queue_name: queue the call will be sent to
