@@ -744,6 +744,22 @@ class Record(Element):
     def __init__(self, **kwargs):
         Element.__init__(self, **kwargs)
 
+
+class Record(Element):
+    """Add the call to <query_name> queue
+
+    queue_name: queue the call will be sent to
+    action: submit the result of the Record and redirect to this URL
+    method: submit to 'action' url using GET or POST
+    redirect: if 'false', don't redirect to 'action', only request url
+        and continue to next element. (default 'true')
+    """
+    VALID_ATTRS = ('action', 'method', 'queue_name', 'redirect')
+
+    def __init__(self, **kwargs):
+        Element.__init__(self, **kwargs)
+
+
 class PreAnswer(Element):
     """Answer the call in Early Media Mode and execute nested element
     """
