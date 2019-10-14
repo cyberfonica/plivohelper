@@ -627,7 +627,7 @@ class Number(Element):
     sendDigits: key to press after connecting to the number
     """
     VALID_ATTRS = ('sendDigits', 'sendOnPreanswer', 'gateways', 'gatewayCodecs',
-                   'gatewayTimeouts', 'gatewayRetries', 'extraDialString', 'trackAgent')
+                   'gatewayTimeouts', 'gatewayRetries', 'extraDialString')
     def __init__(self, number, **kwargs):
         Element.__init__(self, **kwargs)
         self.body = number
