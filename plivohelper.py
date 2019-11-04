@@ -385,6 +385,21 @@ class Element(object):
             raise PlivoException("Invalid attribute '%s' for Element %s" \
                 % (attr, self.name))
 
+    def _compare_attrs(self, other_attrs):
+        return self.attrs == other_attrs
+
+    def __eq__(self, other):
+        same_name = self.name == other.name
+        same_body = self.body == other.body
+        same_elements_length = len(self.elements) == len(other.elements)
+        same_attrs = self._compare_attrs(other.attrs)
+        if not (same_name and same_body and same_elements_length and same_attrs):
+            return False
+        for idx, element in enumerate(self.elements):
+            if not element == other.elements[idx]:
+                return False
+        return True
+
     @staticmethod
     def bool2txt(var):
         """Map True to 'true'
@@ -628,6 +643,15 @@ class Number(Element):
     """
     VALID_ATTRS = ('sendDigits', 'sendOnPreanswer', 'gateways', 'gatewayCodecs',
                    'gatewayTimeouts', 'gatewayRetries', 'extraDialString')
+
+    def _compare_attrs(self, other_attrs):
+        for attr in self.attrs:
+            if attr == 'extraDialString':
+                continue
+            if self.attrs[attr] != other_attrs[attr]:
+                return False
+        return True
+
     def __init__(self, number, **kwargs):
         Element.__init__(self, **kwargs)
         self.body = number
